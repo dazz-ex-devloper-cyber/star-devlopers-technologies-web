@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html><head><title></title><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' http://localhost:5476/vendor/tailwindcss-browser.js https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; connect-src 'none'; form-action 'none'; base-uri 'none';"><style type="text/tailwindcss">@custom-variant dark (&:where(.dark, .dark *));</style><style>body { margin: 0; padding: 16px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; } :root{--bg:#000;--bg-elevated:#111;--bg-hover:#222;--card:#0a0a0a;--card-fg:#fff;--text:#fff;--text-strong:#fff;--muted:#ddd;--muted-strong:#bbb;--border:#666;--border-strong:#999;--accent:#00d4ff;--accent-hover:#3df;--accent-subtle:#00d4ff33;--ok:#00ff41;--ok-subtle:#00ff4126;--warn:#fc0;--warn-subtle:#ffcc0026;--danger:red;--danger-subtle:#ff000026;--info:#00d4ff;color-scheme:dark}html{background:var(--bg)}body{background:var(--bg);color:var(--text)}</style><script src="http://localhost:5476/vendor/tailwindcss-browser.js" crossorigin="anonymous" onerror="window.__mcTwError=1;window.dispatchEvent(new Event('mc-tw-error'))"></script></head><body class="dark"><script>(function(){
+  function execCommandCopy(text){
+    if (typeof document.execCommand !== 'function') return false;
+    var previouslyFocused = document.activeElement;
+    var selection = document.getSelection();
+    var savedRanges = [];
+    if (selection) { for (var i = 0; i < selection.rangeCount; i++) savedRanges.push(selection.getRangeAt(i)); }
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.readOnly = true;
+    ta.setAttribute('aria-hidden', 'true');
+    ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;padding:0;border:0;opacity:0';
+    document.body.appendChild(ta);
+    try {
+      ta.select();
+      return document.execCommand('copy');
+    } catch (e) {
+      return false;
+    } finally {
+      document.body.removeChild(ta);
+      if (selection) {
+        selection.removeAllRanges();
+        for (var j = 0; j < savedRanges.length; j++) selection.addRange(savedRanges[j]);
+      }
+      if (previouslyFocused && previouslyFocused.focus) {
+        try { previouslyFocused.focus({ preventScroll: true }); } catch (e) {}
+      }
+    }
+  }
+  function wrappedWriteText(nativeWriteText, text){
+    if (nativeWriteText) {
+      return nativeWriteText(text).then(function(){ return undefined; }, function(err){
+        if (execCommandCopy(text)) return undefined;
+        throw err;
+      });
+    }
+    return execCommandCopy(text)
+      ? Promise.resolve(undefined)
+      : Promise.reject(new Error('copy failed'));
+  }
+  try {
+    if (navigator.clipboard) {
+      var native = navigator.clipboard.writeText
+        ? navigator.clipboard.writeText.bind(navigator.clipboard)
+        : null;
+      try {
+        Object.defineProperty(navigator.clipboard, 'writeText', {
+          configurable: true,
+          value: function(text){ return wrappedWriteText(native, text); },
+        });
+      } catch (e) {}
+    } else {
+      try {
+        Object.defineProperty(navigator, 'clipboard', {
+          configurable: true,
+          value: { writeText: function(text){ return wrappedWriteText(null, text); } },
+        });
+      } catch (e) {}
+    }
+  } catch (e) {}
+})();</script>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Star Developers Technologies Pvt. Limited | We Build The Digital Future</title>
+<meta name="description" content="Star Developers Technologies Pvt. Limited delivers innovative software, web, mobile, AI and custom technology solutions designed around your business.">
+<meta name="keywords" content="web development, mobile app development, software development, AI solutions, cloud solutions, IT consulting, Star Developers Technologies">
+<meta property="og:title" content="Star Developers Technologies Pvt. Limited">
+<meta property="og:description" content="We Build The Digital Future. Premium IT solutions for businesses, startups and organizations.">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Syne:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #00000f;
+    --bg-secondary: #03020f;
+    --bg-card: rgba(255,255,255,0.03);
+    --accent-blue: #4f8ef7;
+    --accent-cyan: #06d6d6;
+    --accent-violet: #9d5cf6;
+    --accent-gold: #f5a623;
+    --brand-gold: #f5a623;
+    --brand-navy: #1a2d6b;
+    --text-primary: #e8eeff;
+    --text-secondary: #8892b0;
+    --text-muted: #3a4568;
+    --border: rgba(255,255,255,0.07);
+    --glow-blue: 0 0 40px rgba(79,142,247,0.3);
+    --glow-violet: 0 0 40px rgba(157,92,246,0.3);
+    --glow-gold: 0 0 30px rgba(245,166,35,0.4);
+    --gradient-hero: linear-gradient(135deg, #4f8ef7 0%, #9d5cf6 50%, #06d6d6 100%);
+    --gradient-card: linear-gradient(135deg, rgba(79,142,247,0.1), rgba(157,92,246,0.05));
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+  }
+  *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg-primary); color: var(--text-primary); font-family: var(--font-body); overflow-x: hidden; cursor: none; }
+  body.reduced-motion * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+
+  /* STARFIELD — fixed behind everything */
+  #starfield { position:fixed; inset:0; z-index:0; pointer-events:none; }
+
+  /* NEBULA GLOW LAYERS */
+  body::before {
+    content:'';
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 20%, rgba(79,142,247,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 70%, rgba(157,92,246,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 30% at 50% 100%, rgba(6,214,214,0.03) 0%, transparent 60%);
+  }
+
+  /* Sections sit above starfield */
+  section, nav, footer, .cta-band, #loader, #ai-btn, #ai-label, #ai-panel, #cursor, #cursor-ring,
+  .mobile-menu, #mobile-menu {
+    position: relative;
+    z-index: 1;
+  }
+
+  #cursor { position:fixed; width:12px; height:12px; background:var(--accent-blue); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:transform 0.1s, background 0.2s; mix-blend-mode:screen; }
+  #cursor-ring { position:fixed; width:36px; height:36px; border:1px solid rgba(79,142,247,0.5); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:all 0.15s ease; }
+
+  #loader { position:fixed; inset:0; z-index:10000; background:var(--bg-primary); display:flex; flex-direction:column; align-items:center; justify-content:center; transition:opacity 0.6s, visibility 0.6s; }
+  #loader.hidden { opacity:0; visibility:hidden; }
+  .loader-logo { font-family:var(--font-display); font-size:2rem; font-weight:800; letter-spacing:0.1em; background:var(--gradient-hero); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:2rem; }
+  .loader-bar { width:200px; height:2px; background:rgba(255,255,255,0.1); border-radius:2px; overflow:hidden; }
+  .loader-progress { height:100%; background:var(--gradient-hero); border-radius:2px; animation:loadProgress 2s ease forwards; }
+  @keyframes loadProgress { from{width:0} to{width:100%} }
+  .loader-text { font-size:0.75rem; letter-spacing:0.3em; color:var(--text-secondary); margin-top:1rem; text-transform:uppercase; }
+
+  #hero-canvas { position:absolute; inset:0; z-index:1; }
+
+  nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:1.25rem 4rem; display:flex; align-items:center; justify-content:space-between; transition:all 0.4s ease; }
+  nav.scrolled { background:rgba(0,0,15,0.75); backdrop-filter:blur(24px); border-bottom:1px solid rgba(79,142,247,0.15); padding:0.9rem 4rem; }
+  .nav-logo { display:flex; align-items:center; gap:0.75rem; text-decoration:none; }
+  .logo-star { width:44px; height:44px; background:linear-gradient(135deg, var(--brand-gold), #ffd700); clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); filter:drop-shadow(0 0 14px rgba(245,166,35,0.8)); flex-shrink:0; }
+  .logo-text { display:flex; flex-direction:column; }
+  .logo-name { font-family:var(--font-display); font-weight:800; font-size:1rem; letter-spacing:0.08em; color:var(--brand-gold); line-height:1; }
+  .logo-sub { font-size:0.6rem; letter-spacing:0.25em; color:var(--text-secondary); text-transform:uppercase; }
+  .nav-links { display:flex; gap:2rem; list-style:none; }
+  .nav-links a { font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-secondary); text-decoration:none; transition:color 0.3s; position:relative; }
+  .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--accent-blue); transition:width 0.3s; }
+  .nav-links a:hover { color:var(--text-primary); }
+  .nav-links a:hover::after { width:100%; }
+  .nav-cta { padding:0.6rem 1.5rem; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; background:transparent; border:1px solid rgba(79,142,247,0.5); color:var(--accent-blue); border-radius:4px; cursor:pointer; transition:all 0.3s; font-family:var(--font-body); text-decoration:none; }
+  .nav-cta:hover { background:rgba(79,142,247,0.1); border-color:var(--accent-blue); box-shadow:var(--glow-blue); }
+  .nav-mobile-btn { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+  .nav-mobile-btn span { width:24px; height:2px; background:var(--text-primary); border-radius:2px; transition:all 0.3s; }
+
+  #hero { position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 2rem; overflow:hidden; background:transparent; }
+  .hero-content { position:relative; z-index:2; max-width:900px; }
+  .hero-badge { display:inline-flex; align-items:center; gap:0.5rem; padding:0.4rem 1.2rem; border:1px solid rgba(79,142,247,0.3); border-radius:100px; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent-blue); background:rgba(79,142,247,0.05); margin-bottom:2rem; animation:fadeInUp 0.8s ease 0.5s both; }
+  .hero-badge::before { content:''; width:6px; height:6px; background:var(--accent-cyan); border-radius:50%; animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+  .hero-title { font-family:var(--font-display); font-size:clamp(3rem,8vw,7rem); font-weight:800; line-height:0.95; letter-spacing:-0.02em; animation:fadeInUp 0.8s ease 0.7s both; }
+  .hero-title .gradient-text { background:var(--gradient-hero); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .hero-sub { font-size:clamp(1rem,2vw,1.2rem); color:var(--text-secondary); max-width:600px; margin:2rem auto; line-height:1.7; animation:fadeInUp 0.8s ease 0.9s both; }
+  .hero-ctas { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; animation:fadeInUp 0.8s ease 1.1s both; }
+  .btn-primary { padding:1rem 2.5rem; background:var(--gradient-hero); color:#fff; border:none; border-radius:6px; font-size:0.85rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; transition:all 0.3s; font-family:var(--font-body); text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem; }
+  .btn-primary:hover { transform:translateY(-2px); box-shadow:0 20px 60px rgba(79,142,247,0.4); }
+  .btn-ghost { padding:1rem 2.5rem; background:rgba(255,255,255,0.03); color:var(--text-primary); border:1px solid rgba(255,255,255,0.15); border-radius:6px; font-size:0.85rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; transition:all 0.3s; font-family:var(--font-body); text-decoration:none; backdrop-filter:blur(10px); }
+  .btn-ghost:hover { background:rgba(255,255,255,0.07); border-color:rgba(255,255,255,0.3); transform:translateY(-2px); }
+  .scroll-indicator { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); font-size:0.65rem; letter-spacing:0.3em; color:var(--text-muted); text-transform:uppercase; animation:fadeInUp 0.8s ease 1.5s both, bounce 2s ease 2s infinite; z-index:2; }
+  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+  @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+  section { position:relative; overflow:hidden; }
+  /* Space-themed section backgrounds — transparent so starfield shows through */
+  #about { background: linear-gradient(180deg, rgba(0,0,15,0.85) 0%, rgba(3,2,15,0.9) 100%); }
+  #services { background: rgba(3,2,15,0.88); }
+  #builder { background: rgba(0,0,15,0.85); }
+  #tech { background: rgba(3,2,15,0.88); }
+  #why { background: rgba(0,0,15,0.85); }
+  #process { background: rgba(3,2,15,0.88); }
+  #projects { background: rgba(0,0,15,0.85); }
+  #industries { background: rgba(3,2,15,0.88); }
+  #contact { background: rgba(0,0,15,0.85); }
+  footer { background: rgba(1,0,8,0.95); border-top:1px solid var(--border); padding:5rem 0 2rem; }
+
+  .section-inner { max-width:1200px; margin:0 auto; padding:6rem 2rem; }
+  .section-label { font-size:0.7rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--accent-blue); margin-bottom:1rem; display:flex; align-items:center; gap:0.75rem; }
+  .section-label::before { content:''; width:2rem; height:1px; background:var(--accent-blue); }
+  .section-title { font-family:var(--font-display); font-size:clamp(2rem,5vw,4rem); font-weight:800; line-height:1.05; letter-spacing:-0.02em; margin-bottom:1.5rem; }
+  .section-sub { color:var(--text-secondary); font-size:1.05rem; line-height:1.8; max-width:600px; }
+
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:6rem; align-items:center; }
+  .about-stats { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:3rem; }
+  .stat-card { padding:1.5rem; background:rgba(255,255,255,0.03); border:1px solid rgba(79,142,247,0.15); border-radius:12px; transition:all 0.3s; backdrop-filter:blur(8px); }
+  .stat-card:hover { border-color:rgba(79,142,247,0.4); box-shadow:var(--glow-blue); transform:translateY(-4px); }
+  .stat-num { font-family:var(--font-display); font-size:2.5rem; font-weight:800; background:var(--gradient-hero); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .stat-label { font-size:0.8rem; letter-spacing:0.1em; color:var(--text-secondary); margin-top:0.25rem; text-transform:uppercase; }
+  .about-visual { position:relative; display:flex; align-items:center; justify-content:center; }
+  .globe-container { width:350px; height:350px; position:relative; }
+  #globe-canvas { width:100%; height:100%; }
+
+  /* LEADER CARDS */
+  .leadership-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:3rem; }
+  .leader-card { padding:2rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:16px; transition:all 0.3s; backdrop-filter:blur(8px); }
+  .leader-card:hover { border-color:rgba(245,166,35,0.35); box-shadow:var(--glow-gold); transform:translateY(-4px); }
+  .leader-avatar {
+    width:80px; height:80px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-size:1.6rem; font-weight:800;
+    margin-bottom:1.25rem;
+    position:relative;
+  }
+  .leader-avatar.kt {
+    background: linear-gradient(135deg, #f5a623, #ffd700);
+    color: #020215;
+    box-shadow: 0 0 28px rgba(245,166,35,0.5), 0 0 60px rgba(245,166,35,0.15);
+  }
+  .leader-avatar.ml {
+    background: linear-gradient(135deg, #4f8ef7, #9d5cf6);
+    color: #ffffff;
+    box-shadow: 0 0 28px rgba(79,142,247,0.5), 0 0 60px rgba(157,92,246,0.15);
+  }
+  .leader-name { font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.25rem; }
+  .leader-title { font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent-blue); }
+
+  #services { }
+  .services-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5rem; margin-top:4rem; }
+  .service-card { padding:2rem; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:16px; cursor:pointer; transition:all 0.4s ease; position:relative; overflow:hidden; transform-style:preserve-3d; backdrop-filter:blur(6px); }
+  .service-card::before { content:''; position:absolute; inset:0; background:var(--gradient-card); opacity:0; transition:opacity 0.4s; border-radius:16px; }
+  .service-card:hover::before { opacity:1; }
+  .service-card:hover { border-color:rgba(79,142,247,0.4); transform:translateY(-8px) rotateX(2deg); box-shadow:0 30px 80px rgba(79,142,247,0.15); }
+  .service-name { font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.75rem; }
+  .service-desc { font-size:0.85rem; color:var(--text-secondary); line-height:1.7; }
+  .service-arrow { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent-blue); margin-top:1.25rem; opacity:0; transform:translateX(-10px); transition:all 0.3s; }
+  .service-card:hover .service-arrow { opacity:1; transform:translateX(0); }
+
+  #builder { }
+  .builder-container { max-width:800px; margin:4rem auto 0; }
+  .step-indicator { display:flex; gap:0.5rem; margin-bottom:3rem; }
+  .step-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.15); transition:all 0.3s; cursor:pointer; }
+  .step-dot.active { width:24px; border-radius:4px; background:var(--accent-blue); }
+  .step-dot.done { background:var(--accent-cyan); }
+  .builder-step { display:none; animation:fadeInUp 0.5s ease; }
+  .builder-step.active { display:block; }
+  .step-title { font-size:0.7rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--accent-blue); margin-bottom:0.75rem; }
+  .step-question { font-family:var(--font-display); font-size:1.8rem; font-weight:700; margin-bottom:2rem; }
+  .options-grid { display:flex; flex-wrap:wrap; gap:0.75rem; }
+  .option-btn { padding:0.7rem 1.2rem; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:8px; color:var(--text-secondary); font-size:0.85rem; cursor:pointer; transition:all 0.2s; font-family:var(--font-body); }
+  .option-btn:hover,.option-btn.selected { background:rgba(79,142,247,0.1); border-color:var(--accent-blue); color:var(--text-primary); }
+  .builder-textarea { width:100%; padding:1.25rem; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:12px; color:var(--text-primary); font-family:var(--font-body); font-size:0.95rem; resize:vertical; min-height:150px; transition:border 0.3s; }
+  .builder-textarea:focus { outline:none; border-color:var(--accent-blue); }
+  .builder-input { width:100%; padding:1rem 1.25rem; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:10px; color:var(--text-primary); font-family:var(--font-body); font-size:0.95rem; margin-bottom:1rem; transition:border 0.3s; }
+  .builder-input:focus { outline:none; border-color:var(--accent-blue); }
+  .builder-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .builder-nav { display:flex; justify-content:space-between; align-items:center; margin-top:2.5rem; }
+  .btn-next { padding:0.9rem 2.5rem; background:var(--gradient-hero); border:none; border-radius:8px; color:#fff; font-size:0.85rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; transition:all 0.3s; font-family:var(--font-body); }
+  .btn-next:hover { transform:translateY(-2px); box-shadow:0 20px 60px rgba(79,142,247,0.4); }
+  .btn-back { padding:0.9rem 2rem; background:transparent; border:1px solid var(--border); border-radius:8px; color:var(--text-secondary); font-size:0.85rem; cursor:pointer; transition:all 0.3s; font-family:var(--font-body); }
+  .btn-back:hover { border-color:rgba(255,255,255,0.3); color:var(--text-primary); }
+  .builder-success { text-align:center; padding:4rem 2rem; display:none; }
+  .builder-success.show { display:block; animation:fadeInUp 0.6s ease; }
+  .success-icon { width:80px; height:80px; background:var(--gradient-hero); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 2rem; box-shadow:0 0 60px rgba(79,142,247,0.5); }
+  .success-title { font-family:var(--font-display); font-size:2.5rem; font-weight:800; margin-bottom:1rem; background:var(--gradient-hero); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+  #tech { }
+  #tech-canvas-wrap { height:500px; position:relative; margin-top:3rem; border-radius:20px; overflow:hidden; border:1px solid var(--border); }
+  #tech-canvas { width:100%; height:100%; }
+  .tech-legend { display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center; margin-top:2rem; }
+  .tech-tag { padding:0.4rem 1rem; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:100px; font-size:0.75rem; color:var(--text-secondary); transition:all 0.3s; cursor:default; }
+  .tech-tag:hover { border-color:var(--accent-blue); color:var(--text-primary); background:rgba(79,142,247,0.08); }
+
+  #why { }
+  .why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:4rem; }
+  .why-card { padding:2.5rem 2rem; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:16px; position:relative; overflow:hidden; cursor:default; transition:all 0.4s; backdrop-filter:blur(6px); }
+  .why-card::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(79,142,247,0.08), rgba(157,92,246,0.04)); opacity:0; transition:opacity 0.4s; }
+  .why-card:hover::after { opacity:1; }
+  .why-card:hover { border-color:rgba(79,142,247,0.3); transform:translateY(-6px); box-shadow:0 30px 80px rgba(79,142,247,0.1); }
+  .why-num { font-family:var(--font-display); font-size:3rem; font-weight:800; color:rgba(79,142,247,0.15); line-height:1; margin-bottom:0.5rem; }
+  .why-title { font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.75rem; }
+  .why-desc { font-size:0.85rem; color:var(--text-secondary); line-height:1.7; opacity:0; max-height:0; overflow:hidden; transition:all 0.4s; }
+  .why-card:hover .why-desc { opacity:1; max-height:200px; }
+
+  #process { }
+  .process-timeline { position:relative; margin-top:4rem; padding:2rem 0; }
+  .process-line { position:absolute; top:50%; left:0; right:0; height:2px; background:rgba(255,255,255,0.05); }
+  .process-progress { position:absolute; top:50%; left:0; height:2px; background:var(--gradient-hero); transition:width 0.5s ease; box-shadow:0 0 20px rgba(79,142,247,0.5); }
+  .process-steps { display:flex; justify-content:space-between; position:relative; z-index:1; }
+  .process-step { display:flex; flex-direction:column; align-items:center; gap:1rem; flex:1; }
+  .process-node { width:56px; height:56px; border-radius:50%; background:rgba(0,0,15,0.9); border:2px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; letter-spacing:0.05em; transition:all 0.5s; cursor:default; color:var(--text-muted); }
+  .process-node.lit { border-color:var(--accent-blue); background:rgba(79,142,247,0.12); color:var(--accent-blue); box-shadow:0 0 30px rgba(79,142,247,0.5); }
+  .process-label { font-size:0.75rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--text-muted); text-align:center; transition:color 0.5s; }
+  .process-label.lit { color:var(--text-primary); }
+
+  #industries { }
+  .industries-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:1rem; margin-top:3rem; }
+  .industry-card { padding:1.5rem 1rem; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:12px; text-align:center; cursor:pointer; transition:all 0.3s; backdrop-filter:blur(6px); }
+  .industry-card:hover,.industry-card.active { background:rgba(79,142,247,0.08); border-color:rgba(79,142,247,0.4); transform:translateY(-4px); }
+  .industry-icon { font-size:2rem; margin-bottom:0.75rem; }
+  .industry-name { font-size:0.8rem; font-weight:600; letter-spacing:0.05em; }
+  .industry-solutions { margin-top:3rem; padding:2rem; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:16px; display:none; animation:fadeInUp 0.4s ease; }
+  .industry-solutions.show { display:block; }
+  .industry-solutions-title { font-family:var(--font-display); font-size:1.5rem; font-weight:700; margin-bottom:1.5rem; }
+  .solutions-list { display:flex; flex-wrap:wrap; gap:0.75rem; }
+  .solution-tag { padding:0.4rem 1rem; background:rgba(79,142,247,0.08); border:1px solid rgba(79,142,247,0.2); border-radius:100px; font-size:0.8rem; color:var(--accent-blue); }
+
+  #contact { }
+  .contact-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:4rem; align-items:start; }
+  .contact-info { padding-top:1rem; }
+  .contact-detail { display:flex; align-items:flex-start; gap:1rem; margin-bottom:1.5rem; padding:1.25rem; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:12px; transition:all 0.3s; backdrop-filter:blur(6px); }
+  .contact-detail:hover { border-color:rgba(79,142,247,0.3); transform:translateX(4px); }
+  .contact-detail-icon { width:40px; height:40px; background:rgba(79,142,247,0.1); border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.1rem; }
+  .contact-detail-text { font-size:0.85rem; color:var(--text-secondary); }
+  .contact-detail-text strong { display:block; color:var(--text-primary); font-size:0.9rem; margin-bottom:0.25rem; }
+  .contact-form { background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:20px; padding:2.5rem; backdrop-filter:blur(10px); }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
+  .form-group { margin-bottom:1rem; }
+  .form-group label { display:block; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-secondary); margin-bottom:0.5rem; }
+  .form-control { width:100%; padding:0.9rem 1.1rem; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:8px; color:var(--text-primary); font-family:var(--font-body); font-size:0.9rem; transition:border 0.3s; }
+  .form-control:focus { outline:none; border-color:var(--accent-blue); background:rgba(79,142,247,0.03); }
+  select.form-control option { background:#00000f; }
+  textarea.form-control { min-height:120px; resize:vertical; }
+  .social-links { display:flex; gap:0.75rem; margin-top:2rem; flex-wrap:wrap; }
+  .social-btn { width:44px; height:44px; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; cursor:pointer; transition:all 0.3s; text-decoration:none; color:var(--text-secondary); }
+  .social-btn:hover { background:rgba(79,142,247,0.1); border-color:rgba(79,142,247,0.4); color:var(--accent-blue); transform:translateY(-3px); }
+  .social-btn.ig { border-color:rgba(225,48,108,0.25); }
+  .social-btn.ig:hover { background:rgba(225,48,108,0.12); border-color:rgba(225,48,108,0.5); color:#e1306c; }
+
+  #ai-btn { position:fixed; bottom:2rem; right:2rem; z-index:900; width:60px; height:60px; border-radius:50%; background:var(--gradient-hero); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.4rem; box-shadow:0 8px 32px rgba(79,142,247,0.5); transition:all 0.3s; animation:aiPulse 3s ease-in-out infinite; }
+  #ai-btn:hover { transform:scale(1.1); box-shadow:0 12px 48px rgba(79,142,247,0.7); }
+  @keyframes aiPulse { 0%,100%{box-shadow:0 8px 32px rgba(79,142,247,0.5)} 50%{box-shadow:0 8px 48px rgba(157,92,246,0.6),0 0 0 8px rgba(79,142,247,0.1)} }
+  #ai-label { position:fixed; bottom:2.4rem; right:5.5rem; z-index:900; background:rgba(0,0,15,0.9); border:1px solid var(--border); border-radius:8px; padding:0.4rem 0.75rem; font-size:0.75rem; white-space:nowrap; backdrop-filter:blur(10px); pointer-events:none; opacity:0; transition:opacity 0.3s; }
+  #ai-btn:hover ~ #ai-label { opacity:1; }
+  #ai-panel { position:fixed; bottom:6rem; right:2rem; z-index:901; width:380px; max-height:550px; background:rgba(3,2,20,0.97); border:1px solid rgba(79,142,247,0.3); border-radius:20px; display:none; flex-direction:column; overflow:hidden; backdrop-filter:blur(30px); box-shadow:0 30px 100px rgba(0,0,0,0.7); animation:slideUp 0.4s ease; }
+  #ai-panel.open { display:flex; }
+  @keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .ai-header { padding:1.25rem 1.5rem; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:0.75rem; }
+  .ai-avatar { width:36px; height:36px; background:var(--gradient-hero); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
+  .ai-name { font-family:var(--font-display); font-weight:700; font-size:0.95rem; }
+  .ai-status { font-size:0.7rem; color:var(--accent-cyan); display:flex; align-items:center; gap:0.3rem; }
+  .ai-status::before { content:''; width:5px; height:5px; background:var(--accent-cyan); border-radius:50%; }
+  .ai-close { margin-left:auto; cursor:pointer; opacity:0.5; font-size:1.2rem; transition:opacity 0.2s; background:none; border:none; color:var(--text-primary); }
+  .ai-close:hover { opacity:1; }
+  .ai-messages { flex:1; overflow-y:auto; padding:1.25rem; display:flex; flex-direction:column; gap:1rem; }
+  .ai-messages::-webkit-scrollbar { width:3px; }
+  .ai-messages::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.1); border-radius:3px; }
+  .ai-msg { max-width:85%; padding:0.75rem 1rem; border-radius:12px; font-size:0.85rem; line-height:1.6; }
+  .ai-msg.bot { background:rgba(79,142,247,0.1); border:1px solid rgba(79,142,247,0.15); align-self:flex-start; border-radius:4px 12px 12px 12px; }
+  .ai-msg.user { background:rgba(255,255,255,0.06); align-self:flex-end; border-radius:12px 4px 12px 12px; }
+  .ai-input-row { padding:1rem 1.25rem; border-top:1px solid var(--border); display:flex; gap:0.75rem; }
+  .ai-input { flex:1; padding:0.7rem 1rem; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:8px; color:var(--text-primary); font-family:var(--font-body); font-size:0.85rem; }
+  .ai-input:focus { outline:none; border-color:rgba(79,142,247,0.5); }
+  .ai-send { padding:0.7rem 1.1rem; background:var(--gradient-hero); border:none; border-radius:8px; color:#fff; cursor:pointer; font-size:1rem; transition:all 0.2s; }
+  .ai-send:hover { transform:scale(1.05); }
+  .ai-quick { padding:0.75rem 1.25rem 0; display:flex; flex-wrap:wrap; gap:0.5rem; }
+  .ai-quick-btn { padding:0.35rem 0.8rem; background:rgba(79,142,247,0.08); border:1px solid rgba(79,142,247,0.2); border-radius:100px; font-size:0.72rem; color:var(--accent-blue); cursor:pointer; transition:all 0.2s; }
+  .ai-quick-btn:hover { background:rgba(79,142,247,0.15); }
+
+  .footer-grid { max-width:1200px; margin:0 auto; padding:0 2rem; display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; gap:4rem; margin-bottom:4rem; }
+  .footer-brand .logo-name { font-size:1.2rem; }
+  .footer-tagline { font-size:0.85rem; color:var(--text-secondary); line-height:1.7; margin-top:1rem; max-width:260px; }
+  .footer-col h4 { font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-muted); margin-bottom:1.5rem; }
+  .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:0.75rem; }
+  .footer-col ul li a { font-size:0.85rem; color:var(--text-secondary); text-decoration:none; transition:color 0.2s; }
+  .footer-col ul li a:hover { color:var(--text-primary); }
+  .footer-bottom { max-width:1200px; margin:0 auto; padding:1.5rem 2rem 0; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+  .footer-bottom p { font-size:0.8rem; color:var(--text-muted); }
+  .footer-bottom-links { display:flex; gap:1.5rem; }
+  .footer-bottom-links a { font-size:0.75rem; color:var(--text-muted); text-decoration:none; transition:color 0.2s; }
+  .footer-bottom-links a:hover { color:var(--text-primary); }
+  .footer-contact { margin-top:1.5rem; display:flex; flex-direction:column; gap:0.5rem; }
+  .footer-contact span { font-size:0.82rem; color:var(--text-secondary); display:flex; align-items:center; gap:0.5rem; }
+
+  .cta-band { background:linear-gradient(135deg, rgba(79,142,247,0.07), rgba(157,92,246,0.04)); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:5rem 2rem; text-align:center; position:relative; overflow:hidden; }
+  .cta-band::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 50%, rgba(79,142,247,0.06), transparent 70%); }
+  .cta-band-title { font-family:var(--font-display); font-size:clamp(2rem,5vw,3.5rem); font-weight:800; max-width:700px; margin:0 auto 1.5rem; line-height:1.1; position:relative; }
+  .cta-band-sub { color:var(--text-secondary); margin-bottom:3rem; font-size:1.05rem; position:relative; }
+  .cta-band-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; position:relative; }
+
+  #projects { }
+  .projects-scroll { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:4rem; }
+  .project-card { background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:16px; overflow:hidden; transition:all 0.4s; cursor:pointer; backdrop-filter:blur(6px); }
+  .project-card:hover { transform:translateY(-8px); box-shadow:0 30px 80px rgba(0,0,0,0.4); border-color:rgba(79,142,247,0.3); }
+  .project-img { height:200px; background:linear-gradient(135deg, rgba(79,142,247,0.2), rgba(157,92,246,0.1)); display:flex; align-items:center; justify-content:center; font-size:3rem; position:relative; overflow:hidden; }
+  .project-img::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, transparent 50%, rgba(0,0,15,0.8)); }
+  .project-body { padding:1.5rem; }
+  .project-tag { font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent-cyan); margin-bottom:0.75rem; }
+  .project-title { font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.75rem; }
+  .project-desc { font-size:0.83rem; color:var(--text-secondary); line-height:1.7; margin-bottom:1.25rem; }
+  .project-techs { display:flex; flex-wrap:wrap; gap:0.4rem; }
+  .tech-pill { padding:0.25rem 0.7rem; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:100px; font-size:0.7rem; color:var(--text-muted); }
+
+  @media(max-width:1024px) {
+    nav { padding:1rem 2rem; } nav.scrolled { padding:0.75rem 2rem; }
+    .footer-grid { grid-template-columns:1fr 1fr; gap:2rem; }
+    .about-grid { grid-template-columns:1fr; gap:3rem; }
+    .about-visual { display:none; }
+    .contact-grid { grid-template-columns:1fr; }
+    .why-grid { grid-template-columns:repeat(2,1fr); }
+    .projects-scroll { grid-template-columns:repeat(2,1fr); }
+    .leadership-grid { grid-template-columns:1fr 1fr; }
+  }
+  @media(max-width:768px) {
+    .nav-links,.nav-cta { display:none; }
+    .nav-mobile-btn { display:flex; }
+    .section-inner { padding:4rem 1.5rem; }
+    .hero-ctas { flex-direction:column; align-items:center; }
+    .services-grid { grid-template-columns:1fr; }
+    .why-grid { grid-template-columns:1fr; }
+    .process-timeline { overflow-x:auto; }
+    .industries-grid { grid-template-columns:repeat(2,1fr); }
+    .contact-grid { grid-template-columns:1fr; }
+    .projects-scroll { grid-template-columns:1fr; }
+    #ai-panel { width:calc(100vw - 2rem); right:1rem; }
+    .footer-grid { grid-template-columns:1fr; gap:2rem; }
+    .footer-bottom { flex-direction:column; gap:1rem; text-align:center; }
+    .builder-grid { grid-template-columns:1fr; }
+    .form-row { grid-template-columns:1fr; }
+    .leadership-grid { grid-template-columns:1fr; }
+  }
+  .text-gradient { background:var(--gradient-hero); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  .text-gold { color:var(--brand-gold); }
+  .mt-3 { margin-top:1.5rem; }
+  .hidden { display:none !important; }
+  .reveal { opacity:0; transform:translateY(30px); transition:all 0.7s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .mobile-menu { display:none; position:fixed; inset:0; background:rgba(0,0,15,0.97); z-index:999; flex-direction:column; align-items:center; justify-content:center; gap:2rem; }
+  .mobile-menu.open { display:flex; }
+  .mobile-menu a { font-family:var(--font-display); font-size:2rem; font-weight:700; color:var(--text-primary); text-decoration:none; transition:color 0.3s; }
+  .mobile-menu a:hover { color:var(--accent-blue); }
+  .mobile-close { position:absolute; top:2rem; right:2rem; font-size:2rem; cursor:pointer; background:none; border:none; color:var(--text-primary); }
+  @media(prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:0.001ms !important; transition-duration:0.001ms !important; } }
+</style>
+
+
+
+<!-- STARFIELD CANVAS — fixed, behind everything -->
+<canvas id="starfield"></canvas>
+
+<div id="loader">
+  <div class="loader-logo">★ STAR DEVELOPERS</div>
+  <div class="loader-bar"><div class="loader-progress"></div></div>
+  <div class="loader-text">Initializing Digital Experience</div>
+</div>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<nav id="mobile-menu" class="mobile-menu">
+  <button class="mobile-close" id="mobile-close">✕</button>
+  <a href="#hero" onclick="closeMobile()">Home</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#builder" onclick="closeMobile()">Solutions</a>
+  <a href="#tech" onclick="closeMobile()">Technologies</a>
+  <a href="#projects" onclick="closeMobile()">Projects</a>
+  <a href="#industries" onclick="closeMobile()">Industries</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</nav>
+
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <div class="logo-star"></div>
+    <div class="logo-text">
+      <span class="logo-name">STAR DEVELOPERS</span>
+      <span class="logo-sub">Technologies Pvt. Limited</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#builder">Solutions</a></li>
+    <li><a href="#tech">Technologies</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Let's Talk →</a>
+  <div class="nav-mobile-btn" id="mobile-btn"><span></span><span></span><span></span></div>
+</nav>
+
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-badge">⚡ Premium IT Solutions · Est. 2020 · India</div>
+    <h1 class="hero-title">
+      WE BUILD<br>
+      <span class="gradient-text">THE DIGITAL</span><br>
+      FUTURE.
+    </h1>
+    <p class="hero-sub">Star Developers Technologies Pvt. Limited delivers innovative software, web, mobile, AI and custom technology solutions designed around your business.</p>
+    <div class="hero-ctas">
+      <a href="#builder" class="btn-primary">Start Your Project →</a>
+      <a href="#services" class="btn-ghost">Explore Our Solutions</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">SCROLL TO EXPLORE ↓</div>
+</section>
+
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <div class="section-label reveal">About Us</div>
+        <h2 class="section-title reveal">Technology That Turns Ideas Into Reality.</h2>
+        <p class="section-sub reveal">Star Developers Technologies Pvt. Limited is an IT solutions company focused on creating reliable, scalable and innovative digital products for businesses, startups and organizations.</p>
+        <div class="about-stats reveal" style="transition-delay:0.2s">
+          <div class="stat-card"><div class="stat-num counter" data-target="50">0</div><div class="stat-label">+ Projects Delivered</div></div>
+          <div class="stat-card"><div class="stat-num counter" data-target="25">0</div><div class="stat-label">+ Technologies Used</div></div>
+          <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Custom Solutions</div></div>
+          <div class="stat-card"><div class="stat-num">24/7</div><div class="stat-label">Client Support</div></div>
+        </div>
+        <div class="leadership-grid reveal mt-3" style="transition-delay:0.4s">
+          <div class="leader-card">
+            <div class="leader-avatar kt">KT</div>
+            <div class="leader-name">T. Kavidoss</div>
+            <div class="leader-title">Founder &amp; Director</div>
+          </div>
+          <div class="leader-card">
+            <div class="leader-avatar ml">ML</div>
+            <div class="leader-name">Mathivanan L</div>
+            <div class="leader-title">Chief Executive Officer</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="globe-container"><canvas id="globe-canvas"></canvas></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label reveal">What We Do</div>
+    <h2 class="section-title reveal">WHAT WE BUILD</h2>
+    <p class="section-sub reveal">From concept to launch — every solution built custom for your business needs.</p>
+    <div class="services-grid" id="services-grid"></div>
+  </div>
+</section>
+
+<section id="builder">
+  <div class="section-inner">
+    <div class="section-label reveal">Custom Solutions</div>
+    <h2 class="section-title reveal">TELL US WHAT YOU NEED.<br><span class="text-gradient">WE'LL BUILD IT.</span></h2>
+    <p class="section-sub reveal">Define your project in minutes. Our team will craft a tailored proposal for you.</p>
+    <div class="builder-container">
+      <div id="builder-form">
+        <div class="step-indicator" id="step-indicator"></div>
+        <div id="steps-container"></div>
+        <div class="builder-nav" id="builder-nav">
+          <button class="btn-back" id="btn-back" onclick="builderPrev()" style="visibility:hidden">← Back</button>
+          <button class="btn-next" id="btn-next" onclick="builderNext()">Continue →</button>
+        </div>
+      </div>
+      <div class="builder-success" id="builder-success">
+        <div class="success-icon">🚀</div>
+        <div class="success-title">YOUR IDEA IS READY TO TAKE OFF.</div>
+        <p style="color:var(--text-secondary);margin-bottom:2rem;line-height:1.7;">We've received your project requirements. Our team will review your brief and reach out within 24 hours to discuss next steps.</p>
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:2rem;text-align:left;margin-bottom:2rem;" id="summary-box"></div>
+        <a href="#contact" class="btn-primary">Talk To Our Team →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tech">
+  <div class="section-inner">
+    <div class="section-label reveal">Tech Stack</div>
+    <h2 class="section-title reveal">OUR TECHNOLOGY<br><span class="text-gradient">ECOSYSTEM</span></h2>
+    <p class="section-sub reveal">Move your cursor over the network to explore the technologies we master.</p>
+    <div id="tech-canvas-wrap"><canvas id="tech-canvas"></canvas></div>
+    <div class="tech-legend" id="tech-legend"></div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="section-inner">
+    <div class="section-label reveal">Our Edge</div>
+    <h2 class="section-title reveal">WHY STAR DEVELOPERS<br><span class="text-gradient">TECHNOLOGIES?</span></h2>
+    <div class="why-grid reveal" style="transition-delay:0.2s">
+      <div class="why-card"><div class="why-num">01</div><div class="why-title">Custom-Built Solutions</div><div class="why-desc">Every project is architected from scratch to fit your exact business needs — no templates, no shortcuts.</div></div>
+      <div class="why-card"><div class="why-num">02</div><div class="why-title">Modern Technology</div><div class="why-desc">We use the latest frameworks, cloud-native architectures, and AI-powered tools to keep you ahead.</div></div>
+      <div class="why-card"><div class="why-num">03</div><div class="why-title">Scalable Architecture</div><div class="why-desc">Built to grow with you. From startup MVPs to enterprise-grade platforms, our code scales seamlessly.</div></div>
+      <div class="why-card"><div class="why-num">04</div><div class="why-title">Security First</div><div class="why-desc">Industry-standard security practices baked into every layer — from authentication to data encryption.</div></div>
+      <div class="why-card"><div class="why-num">05</div><div class="why-title">Transparent Communication</div><div class="why-desc">Regular updates, clear timelines and honest conversations. You're always in the loop.</div></div>
+      <div class="why-card"><div class="why-num">06</div><div class="why-title">Long-Term Support</div><div class="why-desc">We don't disappear after launch. 24/7 support, maintenance and continuous improvement included.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="section-inner">
+    <div class="section-label reveal">How We Work</div>
+    <h2 class="section-title reveal">OUR DEVELOPMENT<br><span class="text-gradient">PROCESS</span></h2>
+    <p class="section-sub reveal">A proven 7-step framework that turns your idea into a market-ready digital product.</p>
+    <div class="process-timeline reveal" style="transition-delay:0.2s" id="process-timeline">
+      <div class="process-line"></div>
+      <div class="process-progress" id="process-progress" style="width:0%"></div>
+      <div class="process-steps" id="process-steps"></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label reveal">Portfolio</div>
+    <h2 class="section-title reveal">BUILT FOR<br><span class="text-gradient">REAL-WORLD IMPACT.</span></h2>
+    <p class="section-sub reveal">Representative projects across industries we've delivered and scaled.</p>
+    <div class="projects-scroll" id="projects-grid"></div>
+  </div>
+</section>
+
+<section id="industries">
+  <div class="section-inner">
+    <div class="section-label reveal">Industries</div>
+    <h2 class="section-title reveal">WE SERVE<br><span class="text-gradient">EVERY INDUSTRY</span></h2>
+    <div class="industries-grid reveal" id="industries-grid"></div>
+    <div class="industry-solutions" id="industry-solutions">
+      <div class="industry-solutions-title" id="industry-solutions-title"></div>
+      <div class="solutions-list" id="industry-solutions-list"></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band" style="position:relative;z-index:1;">
+  <h2 class="cta-band-title reveal">HAVE AN IDEA? <span class="text-gradient">LET'S BUILD IT.</span></h2>
+  <p class="cta-band-sub reveal">Turn your idea into a scalable digital product that drives real business growth.</p>
+  <div class="cta-band-btns reveal" style="transition-delay:0.2s">
+    <a href="#builder" class="btn-primary">Request a Consultation →</a>
+    <a href="#contact" class="btn-ghost">Get a Project Estimate →</a>
+  </div>
+</div>
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label reveal">Get In Touch</div>
+    <h2 class="section-title reveal">LET'S BUILD SOMETHING<br><span class="text-gradient">EXTRAORDINARY.</span></h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📧</div>
+          <div class="contact-detail-text"><strong>Email Us</strong>hellostardevelopers@gmail.com</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">📞</div>
+          <div class="contact-detail-text"><strong>Call / WhatsApp</strong>+91 93441 99243</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">🌍</div>
+          <div class="contact-detail-text"><strong>Service Area</strong>Worldwide — India HQ</div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon">⏰</div>
+          <div class="contact-detail-text"><strong>Availability</strong>24/7 Support · Mon–Sat Active</div>
+        </div>
+        <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7;margin-top:1rem;">
+          <strong style="color:var(--text-primary);display:block;margin-bottom:0.25rem;">Founder &amp; Director:</strong> T. Kavidoss<br>
+          <strong style="color:var(--text-primary);display:block;margin-top:0.75rem;margin-bottom:0.25rem;">Chief Executive Officer:</strong> Mathivanan L
+        </p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/stardeveloperstechnologies?stkn=MWs2M2JzbzVoY2Rkbw%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener" class="social-btn ig" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="#" class="social-btn" title="LinkedIn" style="font-weight:700;font-size:0.85rem;letter-spacing:0;">in</a>
+          <a href="https://wa.me/919344199243" class="social-btn" title="WhatsApp">💬</a>
+          <a href="mailto:hellostardevelopers@gmail.com" class="social-btn" title="Email">✉️</a>
+        </div>
+      </div>
+      <div class="contact-form reveal" style="transition-delay:0.2s">
+        <h3 style="font-family:var(--font-display);font-size:1.4rem;font-weight:700;margin-bottom:1.5rem;">Start Your Project</h3>
+        <form id="contact-form" onsubmit="submitContact(event)">
+          <div class="form-row">
+            <div class="form-group"><label>Full Name *</label><input class="form-control" type="text" required="" placeholder="Your name"></div>
+            <div class="form-group"><label>Company</label><input class="form-control" type="text" placeholder="Company name"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Email *</label><input class="form-control" type="email" required="" placeholder="you@company.com"></div>
+            <div class="form-group"><label>Phone</label><input class="form-control" type="tel" placeholder="+91 xxxxx xxxxx"></div>
+          </div>
+          <div class="form-group">
+            <label>Project Type</label>
+            <select class="form-control">
+              <option value="">Select...</option>
+              <option>Web Development</option><option>Mobile App</option>
+              <option>Web Application</option><option>E-Commerce</option>
+              <option>AI Solution</option><option>Custom Software</option><option>Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Budget Range</label>
+              <select class="form-control">
+                <option value="">Select...</option>
+                <option>Under ₹1L</option><option>₹1L – ₹5L</option>
+                <option>₹5L – ₹20L</option><option>₹20L+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Timeline</label>
+              <select class="form-control">
+                <option value="">Select...</option>
+                <option>1–2 months</option><option>2–4 months</option>
+                <option>4–6 months</option><option>6+ months</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group"><label>Requirements *</label><textarea class="form-control" required="" placeholder="Tell us about your project..." rows="4"></textarea></div>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">Send Enquiry →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:0.75rem">
+        <div class="logo-star"></div>
+        <div class="logo-text">
+          <span class="logo-name">STAR DEVELOPERS</span>
+          <span class="logo-sub">Technologies Pvt. Limited</span>
+        </div>
+      </div>
+      <p class="footer-tagline">Building Digital Success. We craft innovative software, web, mobile, AI and custom technology solutions for businesses worldwide.</p>
+      <div class="footer-contact">
+        <span>📞 +91 93441 99243</span>
+        <span>✉️ hellostardevelopers@gmail.com</span>
+        <span>🌍 Worldwide Services</span>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="#about">About Us</a></li><li><a href="#">Careers</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="#services">Web Development</a></li><li><a href="#services">App Development</a></li><li><a href="#services">AI Solutions</a></li><li><a href="#services">Custom Software</a></li><li><a href="#services">Cloud Solutions</a></li></ul></div>
+    <div class="footer-col"><h4>Resources</h4><ul><li><a href="#">Blog</a></li><li><a href="#projects">Case Studies</a></li><li><a href="#">FAQs</a></li></ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms &amp; Conditions</a></li><li><a href="#">Cookie Policy</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Star Developers Technologies Pvt. Limited. All Rights Reserved.</p>
+    <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+  </div>
+</footer>
+
+<button id="ai-btn" onclick="toggleAI()" title="Star AI">✦</button>
+<div id="ai-label">Star AI Assistant</div>
+<div id="ai-panel">
+  <div class="ai-header">
+    <div class="ai-avatar">✦</div>
+    <div><div class="ai-name">Star AI</div><div class="ai-status">Online · Ready to help</div></div>
+    <button class="ai-close" onclick="toggleAI()">✕</button>
+  </div>
+  <div class="ai-quick" id="ai-quick">
+    <button class="ai-quick-btn" onclick="aiQuick('What services do you offer?')">Our services</button>
+    <button class="ai-quick-btn" onclick="aiQuick('How do I start a project?')">Start a project</button>
+    <button class="ai-quick-btn" onclick="aiQuick('What technologies do you use?')">Tech stack</button>
+    <button class="ai-quick-btn" onclick="aiQuick('What is your pricing?')">Pricing</button>
+  </div>
+  <div class="ai-messages" id="ai-messages">
+    <div class="ai-msg bot">👋 Hi! I'm Star AI — your guide to Star Developers Technologies. Ask me about services, tech stack, or how to start your project!</div>
+  </div>
+  <div class="ai-input-row">
+    <input class="ai-input" id="ai-input" placeholder="Ask Star AI anything..." onkeypress="if(event.key==='Enter')aiSend()">
+    <button class="ai-send" onclick="aiSend()">➤</button>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// STARFIELD — floating stars across the entire page
+// ============================================================
+(function(){
+  const canvas = document.getElementById('starfield');
+  const ctx = canvas.getContext('2d');
+  let W, H, stars = [], shootingStars = [];
+  const STAR_COUNT = window.innerWidth < 768 ? 200 : 500;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = document.documentElement.scrollHeight;
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+  }
+
+  function initStars() {
+    stars = [];
+    for (let i = 0; i < STAR_COUNT; i++) {
+      stars.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.4 + 0.2,
+        alpha: Math.random() * 0.8 + 0.2,
+        speed: Math.random() * 0.015 + 0.005, // twinkle speed
+        phase: Math.random() * Math.PI * 2,
+        color: Math.random() > 0.9
+          ? `hsl(${200 + Math.random()*80},80%,80%)`  // blue/violet stars
+          : Math.random() > 0.95
+            ? `hsl(45,100%,85%)`  // gold stars
+            : '#ffffff',
+        drift: (Math.random() - 0.5) * 0.08, // slow horizontal drift
+        vx: (Math.random() - 0.5) * 0.04,
+      });
+    }
+  }
+
+  let t = 0;
+  function drawStars() {
+    ctx.clearRect(0, 0, W, H);
+    t += 0.008;
+
+    stars.forEach(s => {
+      // Twinkle
+      const a = s.alpha * (0.5 + 0.5 * Math.sin(t * s.speed * 60 + s.phase));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = s.color;
+      ctx.globalAlpha = a;
+      ctx.fill();
+
+      // Occasional glow for brighter stars
+      if (s.r > 1.1) {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r * 3, 0, Math.PI * 2);
+        const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 3);
+        g.addColorStop(0, s.color.replace(')', ',0.15)').replace('rgb', 'rgba').replace('#ffffff', 'rgba(255,255,255,0.12)'));
+        g.addColorStop(1, 'transparent');
+        ctx.fillStyle = g;
+        ctx.globalAlpha = a * 0.6;
+        ctx.fill();
+      }
+
+      ctx.globalAlpha = 1;
+
+      // Slow drift
+      s.x += s.vx;
+      if (s.x < -5) s.x = W + 5;
+      if (s.x > W + 5) s.x = -5;
+    });
+
+    // Occasional shooting star
+    if (Math.random() < 0.003) {
+      shootingStars.push({
+        x: Math.random() * W * 0.7,
+        y: Math.random() * H * 0.4,
+        len: 80 + Math.random() * 120,
+        speed: 6 + Math.random() * 8,
+        alpha: 1,
+        angle: Math.PI / 4 + (Math.random() - 0.5) * 0.3,
+      });
+    }
+    shootingStars = shootingStars.filter(ss => ss.alpha > 0.01);
+    shootingStars.forEach(ss => {
+      const dx = Math.cos(ss.angle) * ss.len, dy = Math.sin(ss.angle) * ss.len;
+      const g = ctx.createLinearGradient(ss.x, ss.y, ss.x + dx, ss.y + dy);
+      g.addColorStop(0, `rgba(255,255,255,${ss.alpha})`);
+      g.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.beginPath();
+      ctx.moveTo(ss.x, ss.y);
+      ctx.lineTo(ss.x + dx, ss.y + dy);
+      ctx.strokeStyle = g;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      ss.x += Math.cos(ss.angle) * ss.speed;
+      ss.y += Math.sin(ss.angle) * ss.speed;
+      ss.alpha -= 0.025;
+    });
+
+    requestAnimationFrame(drawStars);
+  }
+
+  // Re-size canvas when content changes height
+  const ro = new ResizeObserver(() => { resize(); initStars(); });
+  ro.observe(document.body);
+  resize();
+  initStars();
+  drawStars();
+})();
+
+// ============================================================
+// DATA
+// ============================================================
+const SERVICES=[
+  {icon:'🌐',name:'Web Development',desc:'Fast, responsive, SEO-optimised websites and web apps built with modern frameworks.'},
+  {icon:'📱',name:'Mobile App Development',desc:'Native and cross-platform iOS & Android apps with exceptional user experience.'},
+  {icon:'⚙️',name:'Software Development',desc:'Robust, scalable desktop and enterprise software tailored to your workflows.'},
+  {icon:'🎨',name:'UI/UX Design',desc:'Research-driven interfaces that convert visitors into loyal customers.'},
+  {icon:'🤖',name:'AI & Machine Learning',desc:'Intelligent automation, predictive analytics and LLM-powered applications.'},
+  {icon:'☁️',name:'Cloud Solutions',desc:'AWS, Azure & GCP architecture, migration, DevOps and cost optimisation.'},
+  {icon:'🛒',name:'E-Commerce Development',desc:'High-performing online stores with secure payments and inventory systems.'},
+  {icon:'🔧',name:'Custom Software Solutions',desc:'Purpose-built platforms from CRMs to ERPs — designed around your process.'},
+  {icon:'🔄',name:'Digital Transformation',desc:'End-to-end modernisation of legacy systems into digital-first operations.'},
+  {icon:'💼',name:'IT Consulting',desc:'Strategic technology advisory to align your digital investments with business goals.'},
+];
+const TECH_NODES=[
+  {label:'React',cat:'Frontend',color:'#61DAFB'},{label:'Next.js',cat:'Frontend',color:'#ccccff'},
+  {label:'TypeScript',cat:'Frontend',color:'#4f9ef8'},{label:'HTML5',cat:'Frontend',color:'#E34F26'},
+  {label:'CSS3',cat:'Frontend',color:'#2ca8e8'},{label:'Node.js',cat:'Backend',color:'#43c75c'},
+  {label:'Python',cat:'Backend',color:'#5ba4e8'},{label:'Java',cat:'Backend',color:'#ED8B00'},
+  {label:'PHP',cat:'Backend',color:'#9b85f5'},{label:'.NET',cat:'Backend',color:'#7752f8'},
+  {label:'Flutter',cat:'Mobile',color:'#4db8ff'},{label:'React Native',cat:'Mobile',color:'#61DAFB'},
+  {label:'Android',cat:'Mobile',color:'#3DDC84'},{label:'iOS',cat:'Mobile',color:'#b0bec5'},
+  {label:'MySQL',cat:'Database',color:'#4479A1'},{label:'PostgreSQL',cat:'Database',color:'#5591c5'},
+  {label:'MongoDB',cat:'Database',color:'#47A248'},{label:'Firebase',cat:'Database',color:'#FFCA28'},
+  {label:'AWS',cat:'Cloud',color:'#FF9900'},{label:'Azure',cat:'Cloud',color:'#0089D6'},
+  {label:'Google Cloud',cat:'Cloud',color:'#4285F4'},{label:'ML/AI',cat:'AI',color:'#e85c7a'},
+  {label:'Generative AI',cat:'AI',color:'#b055f6'},{label:'LLM APIs',cat:'AI',color:'#e83c55'},
+  {label:'Laravel',cat:'Backend',color:'#FF2D20'},{label:'WordPress',cat:'Frontend',color:'#21a5d4'},
+];
+const PROCESS_STEPS=[
+  {num:'01',label:'Discover'},{num:'02',label:'Plan'},{num:'03',label:'Design'},
+  {num:'04',label:'Develop'},{num:'05',label:'Test'},{num:'06',label:'Deploy'},{num:'07',label:'Support'},
+];
+const INDUSTRIES=[
+  {icon:'🏥',name:'Healthcare',solutions:['Patient Management','Telemedicine','Hospital ERP','Health Analytics']},
+  {icon:'🎓',name:'Education',solutions:['LMS Platform','Student Portal','E-Learning','Exam Management']},
+  {icon:'🏦',name:'Finance',solutions:['FinTech App','Payment Gateway','Banking Portal','Crypto Dashboard']},
+  {icon:'🛒',name:'E-Commerce',solutions:['Online Store','Inventory System','Multi-vendor Platform','Product Analytics']},
+  {icon:'🏠',name:'Real Estate',solutions:['Property Listing','Virtual Tours','CRM for Agents','Document Management']},
+  {icon:'🚚',name:'Logistics',solutions:['Fleet Management','Route Optimisation','Tracking System','Warehouse ERP']},
+  {icon:'🏭',name:'Manufacturing',solutions:['Production ERP','Quality Control','Supply Chain','IoT Integration']},
+  {icon:'🛍️',name:'Retail',solutions:['POS System','Loyalty Program','Inventory App','Customer Analytics']},
+  {icon:'🚀',name:'Startups',solutions:['MVP Development','Rapid Prototyping','Scalable Architecture','Growth Tools']},
+  {icon:'🏛️',name:'Government',solutions:['Citizen Portal','Document Processing','Compliance System','Data Reporting']},
+  {icon:'🎬',name:'Entertainment',solutions:['Streaming Platform','Content CMS','Booking System','Fan Engagement']},
+];
+const PROJECTS=[
+  {icon:'🏥',tag:'Healthcare · Web App',title:'MediTrack Pro',desc:'End-to-end patient management and appointment scheduling for a multi-city clinic chain.',techs:['React','Node.js','PostgreSQL','AWS']},
+  {icon:'🛒',tag:'E-Commerce · Mobile',title:'ShopNow Commerce',desc:'High-performance B2C e-commerce app with real-time inventory, payments and AI recommendations.',techs:['Flutter','Firebase','Stripe','ML']},
+  {icon:'🎓',tag:'Education · Platform',title:'EduForge LMS',desc:'Comprehensive LMS with video streaming, quizzes and certificates for 10K+ students.',techs:['Next.js','MongoDB','AWS','React']},
+  {icon:'🏦',tag:'Finance · Dashboard',title:'FinSight Analytics',desc:'Real-time financial analytics with interactive charts, forecasting and automated reporting.',techs:['React','Python','PostgreSQL','D3.js']},
+  {icon:'🚚',tag:'Logistics · Mobile + Web',title:'FleetOps Manager',desc:'GPS fleet tracking and route optimisation platform serving a pan-India logistics company.',techs:['React Native','Node.js','MongoDB','Google Maps']},
+  {icon:'🏠',tag:'Real Estate · Portal',title:'PropConnect',desc:'Full-stack property listing and virtual tour platform with agent CRM and lead management.',techs:['Next.js','Three.js','PostgreSQL','AWS']},
+];
+const BUILDER_STEPS_DATA=[
+  {title:'Step 1 of 6',question:"What are you looking to build?",type:'single',options:['Website','Mobile App','Web Application','E-Commerce Platform','CRM','ERP','AI Solution','Custom Software','Other'],key:'type'},
+  {title:'Step 2 of 6',question:"Which features do you need?",type:'multi',options:['Authentication','Payment Gateway','Admin Dashboard','AI Integration','Chatbot','Maps/GIS','Notifications','Analytics','API Integration','Cloud Deployment','Database','User Management','Security','Custom Features'],key:'features'},
+  {title:'Step 3 of 6',question:"What's your preferred platform?",type:'single',options:['Web','Android','iOS','Windows','Cross Platform','Cloud'],key:'platform'},
+  {title:'Step 4 of 6',question:"Project Scale?",type:'single',options:['Startup','Small Business','Medium Business','Enterprise'],key:'scale'},
+  {title:'Step 5 of 6',question:"Tell us about your project",type:'textarea',key:'description'},
+  {title:'Step 6 of 6',question:"Your Contact Details",type:'contact',key:'contact'},
+];
+const AI_RESPONSES={
+  services:"We offer Web Development, Mobile App Development, Custom Software, UI/UX Design, AI & Machine Learning, Cloud Solutions, E-Commerce, ERP/CRM, Digital Transformation, and IT Consulting. Which area interests you?",
+  web:"Our web services include custom websites, web apps, e-commerce platforms and PWAs — built with React, Next.js, Node.js and more.",
+  mobile:"We build native Android, iOS, and cross-platform apps using Flutter and React Native. All tested on real devices.",
+  ai:"Our AI services include ML models, chatbots, LLM integrations, predictive analytics and computer vision solutions.",
+  price:"A standard website starts around ₹25,000+. Web apps and mobile apps from ₹75,000+. Custom enterprise software is quoted separately.",
+  start:"Use our Solution Builder on this page to define your requirements, or click 'Let's Talk' to get connected directly. We respond within 24 hours.",
+  tech:"Frontend: React, Next.js, TypeScript. Backend: Node.js, Python, Java, PHP. Mobile: Flutter, React Native. DB: PostgreSQL, MongoDB, Firebase. Cloud: AWS, Azure, GCP.",
+  contact:"📞 +91 93441 99243\n✉️ hellostardevelopers@gmail.com\nOr fill our contact form — we respond within 24 hours!",
+  timeline:"Standard website: 2–4 weeks. Web app: 1–3 months. Mobile app: 2–4 months. Enterprise software: 3–6+ months.",
+  default:"Could you be more specific? I can help with services, tech stack, pricing, timelines, or how to get started."
+};
+
+// LOADER
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hidden'),2200));
+
+// CURSOR
+const cursor=document.getElementById('cursor'),cursorRing=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+(function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;cursorRing.style.left=rx+'px';cursorRing.style.top=ry+'px';requestAnimationFrame(animRing);})();
+document.querySelectorAll('a,button,.service-card,.why-card,.industry-card,.project-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursor.style.transform='translate(-50%,-50%) scale(2.5)';cursorRing.style.transform='translate(-50%,-50%) scale(1.4)';});
+  el.addEventListener('mouseleave',()=>{cursor.style.transform='';cursorRing.style.transform='';});
+});
+
+// NAV
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60));
+document.getElementById('mobile-btn').onclick=()=>document.getElementById('mobile-menu').classList.add('open');
+document.getElementById('mobile-close').onclick=closeMobile;
+function closeMobile(){document.getElementById('mobile-menu').classList.remove('open');}
+
+// HERO CANVAS — interactive particle network (layered on top of starfield)
+(function(){
+  const canvas=document.getElementById('hero-canvas'),ctx=canvas.getContext('2d');
+  let W,H,particles=[],mouse={x:-1000,y:-1000};
+  const N=window.innerWidth<768?40:80;
+  function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;}
+  resize();window.addEventListener('resize',resize);
+  class Particle{
+    constructor(){this.reset();}
+    reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.vx=(Math.random()-0.5)*0.3;this.vy=(Math.random()-0.5)*0.3;this.r=Math.random()*1.5+0.5;this.alpha=Math.random()*0.5+0.15;this.hue=Math.random()>0.5?220:270;}
+    update(){const dx=mouse.x-this.x,dy=mouse.y-this.y,d=Math.sqrt(dx*dx+dy*dy);if(d<150){this.vx-=dx/d*0.4;this.vy-=dy/d*0.4;}this.vx*=0.98;this.vy*=0.98;this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>W||this.y<0||this.y>H)this.reset();}
+    draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`hsla(${this.hue},90%,75%,${this.alpha})`;ctx.fill();}
+  }
+  for(let i=0;i<N;i++)particles.push(new Particle());
+  document.getElementById('hero').addEventListener('mousemove',e=>{const r=canvas.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;});
+  function draw(){ctx.clearRect(0,0,W,H);for(let i=0;i<particles.length;i++){particles[i].update();particles[i].draw();for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<120){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(100,160,255,${(1-d/120)*0.18})`;ctx.lineWidth=0.5;ctx.stroke();}}}requestAnimationFrame(draw);}
+  draw();
+})();
+
+// GLOBE
+(function(){
+  const canvas=document.getElementById('globe-canvas');if(!canvas)return;
+  const ctx=canvas.getContext('2d');canvas.width=350;canvas.height=350;
+  const cx=175,cy=175,R=130;let ang=0;const dots=[];
+  for(let lat=-80;lat<=80;lat+=18)for(let lon=0;lon<360;lon+=24)dots.push({lat:lat*Math.PI/180,lon:lon*Math.PI/180});
+  function draw(){ctx.clearRect(0,0,350,350);ang+=0.004;const g=ctx.createRadialGradient(cx,cy,0,cx,cy,R+20);g.addColorStop(0,'rgba(79,142,247,0.06)');g.addColorStop(1,'transparent');ctx.beginPath();ctx.arc(cx,cy,R+20,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.strokeStyle='rgba(79,142,247,0.18)';ctx.lineWidth=1;ctx.stroke();for(let lat=-60;lat<=60;lat+=30){const y=cy+R*Math.sin(lat*Math.PI/180),rr=R*Math.cos(lat*Math.PI/180);ctx.beginPath();ctx.ellipse(cx,y,rr,rr*0.15,0,0,Math.PI*2);ctx.strokeStyle='rgba(79,142,247,0.1)';ctx.lineWidth=0.5;ctx.stroke();}dots.forEach(d=>{const lon=d.lon+ang,x3=R*Math.cos(d.lat)*Math.sin(lon),y3=R*Math.sin(d.lat),z3=R*Math.cos(d.lat)*Math.cos(lon);if(z3>-20){const px=cx+x3,py=cy-y3,bright=(z3/R)*0.5+0.5;ctx.beginPath();ctx.arc(px,py,1.2,0,Math.PI*2);ctx.fillStyle=`rgba(120,190,255,${bright*0.8})`;ctx.fill();}});ctx.font='bold 14px Syne,sans-serif';ctx.fillStyle='rgba(245,166,35,0.95)';ctx.textAlign='center';ctx.fillText('★ SDT',cx,cy+6);requestAnimationFrame(draw);}
+  draw();
+})();
+
+// SERVICES GRID
+(function(){
+  const grid=document.getElementById('services-grid');
+  SERVICES.forEach(s=>{const el=document.createElement('div');el.className='service-card';el.innerHTML=`<div style="font-size:2.5rem;margin-bottom:1.5rem">${s.icon}</div><div class="service-name">${s.name}</div><div class="service-desc">${s.desc}</div><div class="service-arrow">Learn More →</div>`;el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect();el.style.transform=`translateY(-8px) rotateX(${((e.clientY-r.top)/r.height-0.5)*10}deg) rotateY(${-((e.clientX-r.left)/r.width-0.5)*10}deg)`;});el.addEventListener('mouseleave',()=>{el.style.transform='';});grid.appendChild(el);});
+})();
+
+// SOLUTION BUILDER
+let builderState={step:0,data:{}};
+function initBuilder(){
+  const ind=document.getElementById('step-indicator');
+  ind.innerHTML=BUILDER_STEPS_DATA.map((_,i)=>`<div class="step-dot" id="dot-${i}"></div>`).join('');
+  const container=document.getElementById('steps-container');container.innerHTML='';
+  BUILDER_STEPS_DATA.forEach((s,i)=>{
+    const div=document.createElement('div');div.className='builder-step'+(i===0?' active':'');div.id='step-'+i;
+    let body='';
+    if(s.type==='single'||s.type==='multi'){body=`<div class="options-grid">${s.options.map(o=>`<button class="option-btn" onclick="selectOption(this,'${s.key}','${s.type}','${o.replace(/'/g,"\\'")}'">${o}</button>`).join('')}</div>`;}
+    else if(s.type==='textarea'){body=`<textarea class="builder-textarea" id="ta-${s.key}" placeholder="Describe your idea, target users, key features..."></textarea>`;}
+    else if(s.type==='contact'){body=`<div class="builder-grid"><input class="builder-input" id="f-name" placeholder="Your Name *"><input class="builder-input" id="f-company" placeholder="Company Name"><input class="builder-input" id="f-email" type="email" placeholder="Email Address *"><input class="builder-input" id="f-phone" type="tel" placeholder="Phone Number"></div><select class="builder-input" id="f-contact-pref" style="background:rgba(0,0,15,0.9);width:100%"><option value="">Preferred Contact Method</option><option>Email</option><option>Phone</option><option>WhatsApp</option></select>`;}
+    div.innerHTML=`<div class="step-title">${s.title}</div><div class="step-question">${s.question}</div>${body}`;
+    container.appendChild(div);
+  });
+  updateDots();
+}
+function selectOption(btn,key,type,val){if(type==='single'){btn.closest('.options-grid').querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');builderState.data[key]=val;}else{btn.classList.toggle('selected');if(!builderState.data[key])builderState.data[key]=[];if(btn.classList.contains('selected'))builderState.data[key].push(val);else builderState.data[key]=builderState.data[key].filter(v=>v!==val);}}
+function builderNext(){const step=builderState.step,s=BUILDER_STEPS_DATA[step];if(s.type==='textarea'){const val=document.getElementById('ta-'+s.key).value;if(!val.trim()){alert('Please describe your project.');return;}builderState.data[s.key]=val;}if(s.type==='contact'){const name=document.getElementById('f-name').value,email=document.getElementById('f-email').value;if(!name||!email){alert('Please enter your name and email.');return;}builderState.data.contact={name,company:document.getElementById('f-company').value,email,phone:document.getElementById('f-phone').value,pref:document.getElementById('f-contact-pref').value};submitBuilder();return;}if(step<BUILDER_STEPS_DATA.length-1){document.getElementById('step-'+step).classList.remove('active');builderState.step++;document.getElementById('step-'+builderState.step).classList.add('active');document.getElementById('btn-back').style.visibility='visible';if(builderState.step===BUILDER_STEPS_DATA.length-1)document.getElementById('btn-next').textContent='Generate My Requirement →';updateDots();}}
+function builderPrev(){if(builderState.step>0){document.getElementById('step-'+builderState.step).classList.remove('active');builderState.step--;document.getElementById('step-'+builderState.step).classList.add('active');if(builderState.step===0)document.getElementById('btn-back').style.visibility='hidden';document.getElementById('btn-next').textContent='Continue →';updateDots();}}
+function updateDots(){BUILDER_STEPS_DATA.forEach((_,i)=>{const d=document.getElementById('dot-'+i);d.classList.toggle('active',i===builderState.step);d.classList.toggle('done',i<builderState.step);});}
+function submitBuilder(){document.getElementById('builder-form').style.display='none';const s=document.getElementById('builder-success');s.classList.add('show');const d=builderState.data;document.getElementById('summary-box').innerHTML=`<div style="font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-blue);margin-bottom:1rem">Project Brief Summary</div><table style="width:100%;border-collapse:collapse;font-size:0.85rem"><tr><td style="padding:0.5rem 0;color:var(--text-secondary);width:140px">Project Type</td><td style="color:var(--text-primary)">${d.type||'—'}</td></tr><tr><td style="padding:0.5rem 0;color:var(--text-secondary)">Platform</td><td style="color:var(--text-primary)">${d.platform||'—'}</td></tr><tr><td style="padding:0.5rem 0;color:var(--text-secondary)">Scale</td><td style="color:var(--text-primary)">${d.scale||'—'}</td></tr><tr><td style="padding:0.5rem 0;color:var(--text-secondary)">Features</td><td style="color:var(--text-primary)">${(d.features||[]).join(', ')||'—'}</td></tr><tr><td style="padding:0.5rem 0;color:var(--text-secondary)">Contact</td><td style="color:var(--text-primary)">${d.contact?d.contact.name+' · '+d.contact.email:'—'}</td></tr></table>`;}
+initBuilder();
+
+// TECH CANVAS
+(function(){
+  const canvas=document.getElementById('tech-canvas');if(!canvas)return;
+  const ctx=canvas.getContext('2d'),wrap=document.getElementById('tech-canvas-wrap');
+  let W,H,mouse={x:300,y:200},nodes=[];
+  function resize(){W=canvas.width=wrap.offsetWidth;H=canvas.height=wrap.offsetHeight;nodes=TECH_NODES.map((t,i)=>{const angle=(i/TECH_NODES.length)*Math.PI*2,r=Math.random()*80+80,bx=W/2+Math.cos(angle)*r*(W/600),by=H/2+Math.sin(angle)*r*(H/500);return{...t,x:bx,y:by,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,baseX:bx,baseY:by,r:Math.random()*3+2};});}
+  resize();window.addEventListener('resize',resize);
+  wrap.addEventListener('mousemove',e=>{const r=wrap.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;});
+  const legend=document.getElementById('tech-legend');
+  TECH_NODES.forEach(t=>{const tag=document.createElement('div');tag.className='tech-tag';tag.textContent=t.label;tag.style.borderColor=t.color+'33';legend.appendChild(tag);});
+  function draw(){ctx.clearRect(0,0,W,H);nodes.forEach(n=>{const dx=mouse.x-n.x,dy=mouse.y-n.y,d=Math.sqrt(dx*dx+dy*dy);if(d<150){n.vx+=dx/d*0.05;n.vy+=dy/d*0.05;}n.vx+=(n.baseX-n.x)*0.003;n.vy+=(n.baseY-n.y)*0.003;n.vx*=0.95;n.vy*=0.95;n.x+=n.vx;n.y+=n.vy;});nodes.forEach((a,i)=>nodes.slice(i+1).forEach(b=>{const d=Math.hypot(a.x-b.x,a.y-b.y);if(d<160){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(100,150,255,${(1-d/160)*0.2})`;ctx.lineWidth=0.5;ctx.stroke();}}));nodes.forEach(n=>{const g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,18);g.addColorStop(0,n.color+'99');g.addColorStop(1,'transparent');ctx.beginPath();ctx.arc(n.x,n.y,18,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();ctx.beginPath();ctx.arc(n.x,n.y,n.r+2,0,Math.PI*2);ctx.fillStyle=n.color;ctx.fill();const md=Math.hypot(mouse.x-n.x,mouse.y-n.y);if(md<80){ctx.font='bold 11px Space Grotesk,sans-serif';ctx.fillStyle='rgba(240,244,255,0.95)';ctx.textAlign='center';ctx.fillText(n.label,n.x,n.y-16);ctx.font='9px Space Grotesk,sans-serif';ctx.fillStyle=n.color+'bb';ctx.fillText(n.cat,n.x,n.y-5);}});requestAnimationFrame(draw);}
+  draw();
+})();
+
+// PROCESS TIMELINE
+(function(){
+  const steps=document.getElementById('process-steps');
+  PROCESS_STEPS.forEach(s=>{steps.innerHTML+=`<div class="process-step"><div class="process-node">${s.num}</div><div class="process-label">${s.label}</div></div>`;});
+  const obs=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){let i=0;const int=setInterval(()=>{const n=document.querySelectorAll('.process-node'),l=document.querySelectorAll('.process-label');if(i<n.length){n[i].classList.add('lit');l[i].classList.add('lit');document.getElementById('process-progress').style.width=((i+1)/n.length*100)+'%';i++;}else clearInterval(int);},350);obs.disconnect();}},{threshold:0.3});
+  const tl=document.getElementById('process-timeline');if(tl)obs.observe(tl);
+})();
+
+// PROJECTS
+(function(){
+  const grid=document.getElementById('projects-grid');
+  PROJECTS.forEach(p=>{grid.innerHTML+=`<div class="project-card"><div class="project-img">${p.icon}</div><div class="project-body"><div class="project-tag">${p.tag}</div><div class="project-title">${p.title}</div><div class="project-desc">${p.desc}</div><div class="project-techs">${p.techs.map(t=>`<span class="tech-pill">${t}</span>`).join('')}</div><div style="margin-top:1rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-blue)">View Case Study →</div></div></div>`;});
+})();
+
+// INDUSTRIES
+(function(){
+  const grid=document.getElementById('industries-grid');
+  INDUSTRIES.forEach(ind=>{const card=document.createElement('div');card.className='industry-card';card.innerHTML=`<div class="industry-icon">${ind.icon}</div><div class="industry-name">${ind.name}</div>`;card.addEventListener('click',()=>{document.querySelectorAll('.industry-card').forEach(c=>c.classList.remove('active'));card.classList.add('active');document.getElementById('industry-solutions-title').textContent=`${ind.icon} IT Solutions for ${ind.name}`;document.getElementById('industry-solutions-list').innerHTML=ind.solutions.map(s=>`<span class="solution-tag">${s}</span>`).join('');document.getElementById('industry-solutions').classList.add('show');});grid.appendChild(card);});
+})();
+
+// COUNTER
+(function(){
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.counter').forEach(el=>{const target=+el.dataset.target;let c=0;const t=setInterval(()=>{c+=target/90;if(c>=target){c=target;clearInterval(t);}el.textContent=Math.floor(c);},16.67);});obs.disconnect();}});},{threshold:0.4});
+  const ab=document.getElementById('about');if(ab)obs.observe(ab);
+})();
+
+// REVEAL ON SCROLL
+(function(){
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+})();
+
+// CONTACT FORM
+function submitContact(e){e.preventDefault();const btn=e.target.querySelector('[type=submit]');btn.textContent='Sending...';btn.disabled=true;setTimeout(()=>{btn.textContent='✓ Enquiry Sent!';btn.style.background='linear-gradient(135deg,#10b981,#059669)';e.target.reset();setTimeout(()=>{btn.textContent='Send Enquiry →';btn.disabled=false;btn.style.background='';},3000);},1200);}
+
+// AI ASSISTANT
+let aiOpen=false;
+function toggleAI(){aiOpen=!aiOpen;document.getElementById('ai-panel').classList.toggle('open',aiOpen);if(aiOpen)document.getElementById('ai-input').focus();}
+function aiQuick(q){document.getElementById('ai-input').value=q;aiSend();}
+function aiSend(){const input=document.getElementById('ai-input'),msg=input.value.trim();if(!msg)return;const msgs=document.getElementById('ai-messages');msgs.innerHTML+=`<div class="ai-msg user">${msg}</div>`;input.value='';msgs.scrollTop=msgs.scrollHeight;setTimeout(()=>{msgs.innerHTML+=`<div class="ai-msg bot">${getAIResponse(msg.toLowerCase())}</div>`;msgs.scrollTop=msgs.scrollHeight;},700);}
+function getAIResponse(q){if(q.includes('service')||q.includes('offer'))return AI_RESPONSES.services;if(q.includes('web')||q.includes('website'))return AI_RESPONSES.web;if(q.includes('mobile')||q.includes('app'))return AI_RESPONSES.mobile;if(q.includes('ai')||q.includes('machine'))return AI_RESPONSES.ai;if(q.includes('price')||q.includes('cost')||q.includes('budget'))return AI_RESPONSES.price;if(q.includes('start')||q.includes('begin')||q.includes('project'))return AI_RESPONSES.start;if(q.includes('tech')||q.includes('stack'))return AI_RESPONSES.tech;if(q.includes('contact')||q.includes('email')||q.includes('phone'))return AI_RESPONSES.contact;if(q.includes('time')||q.includes('timeline')||q.includes('how long'))return AI_RESPONSES.timeline;if(q.includes('hello')||q.includes('hi'))return"Hello! 👋 I'm Star AI. Ask me about our services, tech stack, pricing or how to kick off your project! 🚀";if(q.includes('who')||q.includes('about'))return"Star Developers Technologies Pvt. Limited — founded by T. Kavidoss, led by CEO Mathivanan L. We build web, mobile, AI and custom software solutions worldwide. 🚀";return AI_RESPONSES.default;}
+
+// REDUCE MOTION
+const rmBtn=document.createElement('button');rmBtn.style.cssText='position:fixed;bottom:2rem;left:2rem;z-index:900;padding:0.5rem 1rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:rgba(255,255,255,0.4);font-size:0.7rem;cursor:pointer;font-family:Space Grotesk,sans-serif;transition:all 0.2s;';rmBtn.textContent='⚡ Reduce Motion';rmBtn.addEventListener('click',()=>{document.body.classList.toggle('reduced-motion');rmBtn.textContent=document.body.classList.contains('reduced-motion')?'✦ Restore Motion':'⚡ Reduce Motion';});document.body.appendChild(rmBtn);
+
+// HERO PARALLAX
+window.addEventListener('scroll',()=>{const scroll=window.scrollY;if(scroll<window.innerHeight){const hc=document.querySelector('#hero .hero-content');hc.style.transform=`translateY(${scroll*0.3}px)`;hc.style.opacity=`${1-scroll/500}`;}});
+</script>
+
+<script>(function(){
+  function apply(){
+    var cs = getComputedStyle(document.body);
+    if(cs.display!=='flex' && cs.display!=='grid' && cs.display!=='inline-flex' && cs.display!=='inline-grid') return;
+    if(cs.alignItems==='center') document.body.style.alignItems='safe center';
+    if(cs.justifyContent==='center') document.body.style.justifyContent='safe center';
+    if(cs.alignContent==='center') document.body.style.alignContent='safe center';
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', apply);
+  else apply();
+  window.addEventListener('resize', apply);
+})();</script></body></html>
